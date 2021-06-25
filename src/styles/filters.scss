@@ -1,0 +1,19 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+.filters {
+  display: grid;
+  grid-row-gap: 17px;
+  background: $whiteColor;
+  box-shadow: 0 4px 8px $filtersBoxShadowClr;
+
+  &__title {
+    @include fontStyle(16px, 19px, 700);
+    padding: 15px 38px 5px;
+    border-bottom: 1px solid #f8f8f8;
+  }
+
+  &__content {
+    padding: 0 30px 20px;
+  }
+}

@@ -1,0 +1,118 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+.table {
+  &__header {
+    @include tableSettings;
+
+    &-title {
+      @include fontStyle(16px, 19px, 700);
+      padding: 12px 0 11px;
+      text-align: center;
+      background-color: $tableBg;
+    }
+  }
+  &__empty {
+    @include fontStyle(14px, 16px, normal);
+    padding: 12px;
+    border: 1px solid $tableBg;
+    text-align: center;
+    background-color: $whiteColor;
+  }
+
+  &__item {
+    @include tableSettings;
+    align-items: center;
+    justify-items: center;
+    border: 1px solid $tableBg;
+    border-top: none;
+    background-color: $whiteColor;
+  }
+}
+
+.table-settings {
+  position: relative;
+  width: 10px;
+  height: 24px;
+
+  &__btn {
+    @include settingsBtn;
+    z-index: 5;
+    position: absolute;
+    width: 10px;
+    height: 24px;
+    cursor: pointer;
+
+    &-icon {
+      display: block;
+      width: 100%;
+      height: 100%;
+      background-image: url("../img/table-dots.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    &:hover &-icon {
+      opacity: 0.5;
+    }
+
+    &:active &-icon {
+      opacity: 1;
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 50%;
+    right: -10px;
+    display: grid;
+    grid-template-columns: repeat(2, min-content);
+    grid-column-gap: 15px;
+    padding: 3px 29px 3px 10px;
+    border: 1px solid $mainBackground;
+    border-radius: 3px;
+    background-color: $whiteColor;
+    transform: translateY(-50%);
+  }
+
+  &__item {
+    display: flex;
+
+    &-btn {
+      @include settingsBtn;
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      background-color: transparent;
+      overflow: hidden;
+
+      &-icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      &-icon_edit {
+        background-image: url("../img/table-edit.svg");
+      }
+
+      &-icon_remove {
+        background-image: url("../img/table-remove.svg");
+      }
+
+      &:hover {
+        background-color: #e5e9ec;
+      }
+
+      &:hover &-icon {
+        opacity: 0.5;
+      }
+
+      &:active &-icon {
+        opacity: 1;
+      }
+    }
+  }
+}

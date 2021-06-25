@@ -1,0 +1,97 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  src: url("./fonts/roboto-v27-latin_cyrillic-regular.woff2") format("woff2"),
+    url("./fonts/roboto-v27-latin_cyrillic-regular.woff") format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  src: url("./fonts/roboto-v27-latin_cyrillic-500.woff2") format("woff2"),
+    url("./fonts/roboto-v27-latin_cyrillic-500.woff") format("woff");
+}
+@font-face {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  src: url("./fonts/roboto-v27-latin_cyrillic-700.woff2") format("woff2"),
+    url("./fonts/roboto-v27-latin_cyrillic-700.woff") format("woff");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  background-color: $mainBackground;
+  color: $fontColor;
+}
+
+ul {
+  list-style: none;
+}
+
+.app {
+  display: grid;
+  grid-row-gap: 30px;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1220px;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 280px auto;
+  grid-row-gap: 20px;
+  grid-column-gap: 30px;
+  grid-template-areas:
+    "add-btn actions"
+    "filters order-list";
+
+  &__btn {
+    grid-area: add-btn;
+  }
+  &__actions {
+    grid-area: actions;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-column-gap: 20px;
+    align-items: center;
+
+    &_sorting {
+      padding: 20px;
+      border-radius: 3px;
+      box-shadow: 0 4px 12px #e7e7e7;
+      background-color: $whiteColor;
+    }
+
+    &_sorting .select {
+      max-width: 250px;
+    }
+  }
+  &__filters {
+    grid-area: filters;
+  }
+  &__sorting {
+    grid-area: sorting;
+  }
+  &__switch {
+    grid-area: switch;
+  }
+  &__order-list {
+    grid-area: order-list;
+  }
+}

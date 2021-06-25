@@ -1,0 +1,89 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+.select {
+  display: grid;
+  grid-row-gap: 10px;
+  &__title {
+    @include fontStyle(16px, 19px, normal);
+  }
+
+  &__box {
+    position: relative;
+    display: grid;
+
+    &-header {
+      z-index: 5;
+      @include fontStyle(16px, 20px, 700);
+      display: flex;
+      align-items: center;
+      padding: 0 20px 0 10px;
+      height: 30px;
+      border: 1px solid $placeholderColor;
+      background-color: $whiteColor;
+      cursor: pointer;
+      outline: none;
+      overflow: hidden;
+
+      &-icon {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        width: 10px;
+        height: 10px;
+        background-image: url("../img/select-arrow.svg");
+        transition: transform 0.2s ease-in-out;
+      }
+    }
+    &-options {
+      z-index: 10;
+      position: absolute;
+      top: 30px;
+      right: 0;
+      left: 0;
+      display: grid;
+      background-color: $whiteColor;
+      transition: all;
+
+      &-item {
+        @include fontStyle(12px, 14px, normal);
+        padding: 9px 10px;
+        border: 1px solid $placeholderColor;
+        border-top: none;
+        cursor: pointer;
+        overflow: hidden;
+
+        &:hover {
+          background-color: rgba(100, 122, 140, 0.1);
+        }
+      }
+    }
+
+    .placeholder {
+      @include fontStyle(12px, 20px, 500);
+      color: $placeholderColor;
+    }
+
+    .is-open &-header-icon {
+      transform: rotate(-90deg);
+    }
+
+    .selected {
+      @include fontStyle(12px, 20px, 500);
+    }
+  }
+}
+
+.options-enter-active {
+  opacity: 0;
+}
+
+.options-enter-to,
+.options-leave-active {
+  transition: all 0.2s ease-in-out;
+  opacity: 1;
+}
+
+.options-leave-to {
+  opacity: 0;
+}

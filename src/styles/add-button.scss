@@ -1,0 +1,27 @@
+@import "./variables";
+
+.add-btn {
+  padding: 28px 0;
+  max-width: 280px;
+  width: 100%;
+  border: none;
+  border-radius: 2px;
+  background-color: $addBtnColor;
+  text-transform: uppercase;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 4px 4px #EBEBEB;
+  
+  &-name {
+    position: relative;
+    padding-left: 32px;
+    color: $whiteColor;
+    font-size: 14px;
+    line-height: 1;
+    font-weight: 700;
+    background-image: url("../img/add.svg");
+    background-position: left center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+  }
+}

@@ -1,0 +1,22 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+.input-text {
+  &__label {
+    @include fontStyle(14px, 16px, 500);
+    display: grid;
+    grid-row-gap: 10px;
+  }
+
+  &__input {
+    @include fontStyle(14px, 16px, normal);
+    padding: 7px 10px;
+    border: 1px solid $placeholderColor;
+    border-radius: 2px;
+
+    &::placeholder {
+      @include fontStyle(14px, 16px, normal);
+      color: $placeholderColor;
+    }
+  }
+}

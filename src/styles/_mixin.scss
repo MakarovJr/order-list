@@ -1,0 +1,40 @@
+@import "_variables.scss";
+
+@mixin fontStyle($size, $height, $weight) {
+  font-size: $size;
+  line-height: $height;
+  font-weight: $weight;
+}
+
+@mixin modalSettings {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+@mixin iconTable {
+  width: 16px;
+  height: 2px;
+  background-color: #045da7;
+}
+
+@mixin tableSettings {
+  display: grid;
+  grid-template-columns:
+    minmax(100px, 134px) minmax(100px, 244px) minmax(100px, 189px)
+    minmax(100px, 268px) 65px;
+  grid-template-rows: 40px;
+  grid-column-gap: 3px;
+}
+
+@mixin settingsBtn {
+  border: none;
+  background-color: transparent;
+  outline: none;
+}

@@ -1,0 +1,18 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+.widget {
+  &__empty {
+    @include fontStyle(14px, 16px, normal);
+    padding: 12px;
+    border: 1px solid $tableBg;
+    text-align: center;
+    background-color: $whiteColor;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+  }
+}

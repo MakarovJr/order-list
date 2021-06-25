@@ -1,0 +1,60 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+.switch {
+  display: flex;
+  max-width: max-content;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border: 1px solid $switchBorderClr;
+    background-color: $whiteColor;
+
+    &_widget {
+      border-radius: 5px 0 0 5px;
+    }
+
+    &_table {
+      border-radius: 0 5px 5px 0;
+    }
+
+    &-icon {
+      display: block;
+      width: 24px;
+      height: 24px;
+    }
+  }
+}
+
+.icon-widget {
+  background-image: url("../img/icon.svg");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.icon-table {
+  @include iconTable;
+  position: relative;
+
+  &::before {
+    @include iconTable;
+    content: "";
+    position: absolute;
+    transform: translateY(4px);
+  }
+
+  &::after {
+    @include iconTable;
+    content: "";
+    position: absolute;
+    transform: translateY(-4px);
+  }
+}
+
+.router-link-active {
+    background: #E5E9EC;
+}

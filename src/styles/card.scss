@@ -1,0 +1,120 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+.card {
+  border-radius: 0 0 3px 3px;
+  box-shadow: 0 4px 12px #ebebeb;
+  background-color: $whiteColor;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px 20px;
+    background: $cardHeaderBg;
+
+    &-title {
+      @include fontStyle(18px, 21px, 500);
+    }
+
+    &-btn {
+      width: 16px;
+      height: 16px;
+      border: none;
+      background-color: transparent;
+      background-image: url("../img/vertical-dots.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 100%;
+      cursor: pointer;
+    }
+  }
+
+  &__content {
+    padding: 0 20px 20px;
+
+    &-list {
+      display: grid;
+      grid-row-gap: 7px;
+    }
+
+    &-item {
+      @include fontStyle(14px, 16px, normal);
+      padding: 7px 0;
+      border-bottom: 1px solid #f2f2f2;
+    }
+  }
+
+  &__settings {
+    position: relative;
+    width: 16px;
+    height: 16px;
+
+    &-btn {
+      @include settingsBtn;
+      z-index: 5;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+
+      &-icon {
+        display: block;
+        width: 100%;
+        height: 100%;
+        background-image: url("../img/card-dots.svg");
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      &:hover &-icon {
+        opacity: 0.5;
+      }
+
+      &:active &-icon {
+        opacity: 1;
+      }
+    }
+
+    &-list {
+      position: absolute;
+      top: 16px;
+      right: 0;
+      display: grid;
+      grid-template-rows: repeat(2, min-content);
+      grid-row-gap: 8px;
+      padding: 7px 10px;
+      border: 1px solid $mainBackground;
+      border-radius: 3px;
+      box-shadow: 0 4px 4px #b6b6b640;
+      background-color: $whiteColor;
+    }
+
+    &-item {
+      &-btn {
+        @include settingsBtn;
+        @include fontStyle(14px, 16px, normal);
+        position: relative;
+        padding: 0 0 0 19px;
+        cursor: pointer;
+
+        &-icon {
+          position: absolute;
+          left: 0;
+          display: block;
+          width: 14px;
+          height: 14px;
+          background-position: center;
+          background-repeat: no-repeat;
+        }
+
+        &-icon_edit {
+          background-image: url("../img/card-edit.svg");
+        }
+
+        &-icon_remove {
+          background-image: url("../img/card-remove.svg");
+        }
+      }
+    }
+  }
+}

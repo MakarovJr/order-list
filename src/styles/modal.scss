@@ -1,0 +1,73 @@
+@import "_mixin.scss";
+@import "_variables.scss";
+
+.modal {
+  @include modalSettings;
+  transition: all .2s ease-in-out;
+
+  &__background {
+    @include modalSettings;
+    background: $modalBg;
+  }
+
+  &__card {
+    z-index: 1001;
+    display: grid;
+    grid-row-gap: 20px;
+    padding: 25px 20px;
+    max-width: 400px;
+    width: 100%;
+    border-radius: 2px;
+    background-color: $whiteColor;
+
+    &-title {
+      @include fontStyle(16px, 19px, normal);
+      text-align: center;
+    }
+
+    &-btns {
+      display: grid;
+      grid-template-columns: repeat(2, min-content);
+      grid-column-gap: 10px;
+      justify-content: end;
+    }
+
+    &-btn {
+      @include fontStyle(14px, 16px, normal);
+      padding: 5px 10px;
+      border: none;
+      border-radius: 3px;
+      color: $whiteColor;
+      background-color: #2487c9;
+      cursor: pointer;
+      outline: none;
+    }
+
+    &-btn:hover {
+      background-color: rgba(36, 135, 201, .7);
+    }
+    &-btn:active {
+      background-color: #2075ad;
+    }
+  }
+}
+
+
+.modal-transition-active {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+.modal-transition-enter {
+  opacity: 0;
+  
+}
+
+.modal-transition-leave-active {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+.modal-transition-leave {
+  opacity: 1;
+}
