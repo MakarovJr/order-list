@@ -38,7 +38,7 @@ import Header from './components/Header.vue';
 import AddButton from './components/AddButton.vue';
 import Filters from './components/Filters.vue';
 import Modal from './components/Modal.vue';
-import Switcher from './components/Switch.vue';
+import Switcher from './components/Switcher.vue';
 import Select from './components/Select.vue';
 
 export default {

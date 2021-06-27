@@ -18,5 +18,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../styles/switch";
+@import "../styles/switcher";
 </style>

@@ -1,38 +1,124 @@
 <template>
-  <div class="table">
-    <template v-if="orderList === null || orderList.length === 0">
-      <div class="table__empty">Список пуст</div>
-    </template>
-    <template v-else>
-      <div class="table__header">
-        <div class="table__header-title">ID</div>
-        <div class="table__header-title">Номер накладной</div>
-        <div class="table__header-title">Тип заказа</div>
-        <div class="table__header-title">Дата создания</div>
-        <div class="table__header-title"></div>
-      </div>
-      <template v-for="(order, idx) in orderList" >
-        <TableItem :orderItem="order" :key="idx" :ref="idx"/>
-      </template>
-    </template>
+  <div id="app">
+    <a-table
+      :headers="headers"
+      :items="items"
+      :sortParams="sortParams"
+      :sortParamsDefault="sortParamsDefault"
+      :useExtRowComponent="getExtRowComponent"
+      :getRowClassesByItem="getRowClassesByItem"
+    ></a-table>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
-import TableItem from '../components/TableItem.vue';
+import ATable from '../components/ATable/ATable.vue';
+import TableCustomHeader from '../stubs/components/TableCustomHeader.vue';
+import TableCustomCell from '../stubs/components/TableCustomCell.vue';
+import TableExtRowComponent from '../stubs/components/TableExtRowComponent.vue';
+import TableCustomCellActions from '../stubs/components/TableCustomCellActions.vue';
 
 export default {
   name: 'Table',
+
   components: {
-    TableItem,
+    ATable,
   },
+
+  data() {
+    return {
+      headers: [
+        {
+          key: 'pos',
+          title: 'Position',
+          headerAlign: 'center',
+          dataAlign: 'center',
+          classes: 'order-col width-4',
+        },
+        {
+          key: 'number',
+          name: 'number',
+          title: 'Number',
+          headerAlign: 'center',
+          dataAlign: 'left',
+          sortControl: true,
+          useHeaderComponent: TableCustomHeader,
+        },
+        {
+          key: 'name',
+          title: 'Name',
+          headerAlign: 'center',
+          dataAlign: 'left',
+          useComponent: TableCustomCell,
+        },
+        {
+          key: 'date',
+          title: 'Date',
+          headerAlign: 'center',
+          dataAlign: 'left',
+          useComponent: TableCustomCell,
+        },
+        {
+          key: 'actions',
+          title: 'Actions',
+          headerAlign: 'center',
+          dataAlign: 'center',
+          useComponent: TableCustomCellActions,
+        },
+        {
+          key: 'mobileDescription',
+          title: 'Description',
+          headerAlign: 'center',
+          dataAlign: 'center',
+          classes: 'no-info mobile-col',
+          position: 'afterAll',
+        },
+      ],
+      sortParamsDefault: {
+        sidx: 'number',
+        sord: 'desc',
+      },
+      sortParams: {
+        sidx: '',
+        sord: '',
+      },
+      items: [
+        {
+          id: 1,
+          pos: 1,
+          number: '1234',
+          name: 'Name Name Name',
+        },
+        {
+          id: 2,
+          pos: 2,
+          number: '5678',
+          name: 'Name Name Name Name Name',
+        },
+        {
+          id: 3,
+          pos: 3,
+          number: '9999',
+          name: 'NameNameNameNameNameNameNameNameNameNameNameName',
+        },
+      ],
+    };
+  },
+
   computed: {
-    ...mapGetters(['orderList']),
+    getExtRowComponent() {
+      return TableExtRowComponent;
+    },
+  },
+
+  methods: {
+    getRowClassesByItem(item) {
+      return `custom-class-${item.id}`;
+    },
   },
 };
 </script>
 
 <style lang="scss">
-@import "../styles/my-table";
+@import "../styles/table";
 </style>
