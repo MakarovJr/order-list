@@ -145,6 +145,9 @@ $mainBbColor: #fefefe;
   .mobile-col {
     display: none;
   }
+  .text-center {
+    text-align: center;
+  }
 }
 
 @media (max-width: 760px) {
@@ -219,7 +222,7 @@ $mainBbColor: #fefefe;
       }
 
       &.text-center {
-        text-align: left;
+        text-align: center;
       }
 
       &.m-text-center {

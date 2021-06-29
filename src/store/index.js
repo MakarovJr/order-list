@@ -76,12 +76,13 @@ export default new Vuex.Store({
     },
     sortList(ctx, payload) {
       ctx.commit(SORTING, payload);
+      if (ctx.state.filtration.active) {
+        ctx.commit(FILTER_LIST, ctx.state.filtration);
+      }
     },
     filterList(ctx, payload) {
-      if (!ctx.state.sorting.active) {
-        ctx.commit(FILTER_LIST, payload);
-      } else {
-        ctx.commit(FILTER_LIST, payload);
+      ctx.commit(FILTER_LIST, payload);
+      if (ctx.state.sorting.active) {
         ctx.commit(SORTING, ctx.state.sorting);
       }
     },
@@ -201,7 +202,7 @@ export default new Vuex.Store({
     },
     [SORTING]: (state, key) => {
       if (key) {
-        const list = state.filtration ? state.computedList : state.orderList;
+        const list = state.filtration.active ? state.computedList : state.orderList.map((i) => i);
         state.sorting.active = true;
         state.sorting.paramSort = key.paramSort;
         state.sorting.field = key.field;
@@ -227,6 +228,11 @@ export default new Vuex.Store({
             }
             return compare;
           });
+        } else if (key.paramSort === 'nosort') {
+          state.sorting.active = false;
+          state.sorting.paramSort = '';
+          state.sorting.field = '';
+          state.computedList = state.orderList;
         }
       } else {
         state.sorting.active = false;

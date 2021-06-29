@@ -2,7 +2,7 @@
   <div id="app">
     <a-table
       :headers="headers"
-      :items="items"
+      :items="orderList"
       :sortParams="sortParams"
       :sortParamsDefault="sortParamsDefault"
       :useExtRowComponent="getExtRowComponent"
@@ -12,6 +12,7 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import ATable from '../components/ATable/ATable.vue';
 import TableCustomHeader from '../stubs/components/TableCustomHeader.vue';
 import TableCustomCell from '../stubs/components/TableCustomCell.vue';
@@ -29,38 +30,38 @@ export default {
     return {
       headers: [
         {
-          key: 'pos',
-          title: 'Position',
+          key: 'id',
+          title: 'ID',
           headerAlign: 'center',
           dataAlign: 'center',
           classes: 'order-col width-4',
         },
         {
-          key: 'number',
+          key: 'orderNumber',
           name: 'number',
-          title: 'Number',
+          title: 'Номер накладной',
           headerAlign: 'center',
-          dataAlign: 'left',
+          dataAlign: 'center',
           sortControl: true,
           useHeaderComponent: TableCustomHeader,
         },
         {
-          key: 'name',
-          title: 'Name',
+          key: 'orderType',
+          title: 'Тип заказа',
           headerAlign: 'center',
-          dataAlign: 'left',
+          dataAlign: 'center',
           useComponent: TableCustomCell,
         },
         {
-          key: 'date',
-          title: 'Date',
+          key: 'orderDate',
+          title: 'Дата создания',
           headerAlign: 'center',
-          dataAlign: 'left',
+          dataAlign: 'center',
           useComponent: TableCustomCell,
         },
         {
           key: 'actions',
-          title: 'Actions',
+          title: '',
           headerAlign: 'center',
           dataAlign: 'center',
           useComponent: TableCustomCellActions,
@@ -82,30 +83,12 @@ export default {
         sidx: '',
         sord: '',
       },
-      items: [
-        {
-          id: 1,
-          pos: 1,
-          number: '1234',
-          name: 'Name Name Name',
-        },
-        {
-          id: 2,
-          pos: 2,
-          number: '5678',
-          name: 'Name Name Name Name Name',
-        },
-        {
-          id: 3,
-          pos: 3,
-          number: '9999',
-          name: 'NameNameNameNameNameNameNameNameNameNameNameName',
-        },
-      ],
+      items: [],
     };
   },
 
   computed: {
+    ...mapGetters(['orderList']),
     getExtRowComponent() {
       return TableExtRowComponent;
     },

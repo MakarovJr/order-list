@@ -3,7 +3,7 @@
     <div class="card__header">
       <h3 class="card__header-title">{{ title }}</h3>
       <div class="card__settings">
-        <button class="card__settings-btn" @click="showSettings">
+        <button class="card__settings-btn" @click="showSettings" v-click-outside="onClickOutside">
           <span class="card__settings-btn-icon" />
         </button>
         <ul class="card__settings-list" v-if="seen">
@@ -46,6 +46,7 @@
 </template>
 
 <script>
+import ClickOutside from 'vue-click-outside';
 import { mapActions } from 'vuex';
 import { MODAL_DISPLAY } from '../store/mutation-types';
 
@@ -56,6 +57,9 @@ export default {
     return {
       seen: false,
     };
+  },
+  directives: {
+    ClickOutside,
   },
   methods: {
     ...mapActions(['removeItem']),

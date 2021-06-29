@@ -1,7 +1,6 @@
 <template>
   <td>
     {{item[header.key]}}<br/>
-    (some custom cell logic)
   </td>
 </template>
 

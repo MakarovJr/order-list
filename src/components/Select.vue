@@ -6,6 +6,7 @@
         class="select__box-header"
         :class="{'is-open': isOpen, selected: isSelected, placeholder: isPlaceholder}"
         @click="showOptions"
+        v-click-outside="onClickOutside"
       >
         {{ header }}
         <span class="select__box-header-icon"></span>
@@ -27,7 +28,7 @@
 </template>
 
 <script>
-// import vClickOutside from 'click-outside-vue3';
+import ClickOutside from 'vue-click-outside';
 
 export default {
   name: 'Select',
@@ -41,9 +42,9 @@ export default {
       header: '',
     };
   },
-  // directives: {
-  //   clickOutside: vClickOutside.directive,
-  // },
+  directives: {
+    ClickOutside,
+  },
   mounted() {
     if (this.selectHeader) {
       this.header = this.selectHeader;
